@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server initialized by hsk9210",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/im24project8-server.git"
+  },
+  "keywords": [
+    "first_project"
+  ],
+  "author": "hsk9210,KIMMINGUK-KOR,jun931223,doehyunbaek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestates/im24project8-server/issues"
+  },
+  "homepage": "https://github.com/codestates/im24project8-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
