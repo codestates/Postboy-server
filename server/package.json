@@ -1,0 +1,44 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server initialized by hsk9210",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/im24project8-server.git"
+  },
+  "keywords": [
+    "first_project"
+  ],
+  "author": "hsk9210,KIMMINGUK-KOR,jun931223,doehyunbaek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestates/im24project8-server/issues"
+  },
+  "homepage": "https://github.com/codestates/im24project8-server#readme",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^4.0.2"
+  }
+}
