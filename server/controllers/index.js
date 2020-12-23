@@ -1,8 +1,9 @@
 const { user } = require("../models");
 module.exports = {
   getTestController: (req,res) =>{
+    //GET 요청 테스트 - 작동됨 확인
     let data = req.body;
-    console.log(data);
+    console.log(req);
     user.findOne({
       where: {
         email: 'hsk9210@gmail.com',
@@ -14,21 +15,53 @@ module.exports = {
           req.session.userid = result.id;
           res.status(200).send({
              id: result.id,
-             message:'Method:get is successful'
+             message:'Method:get is successful',
             });
         })
 
+  },
+  signUpController: (req, res) => {
+    // 회원정보를 first 스키마에 저장
+    // API상 req.body 파라미터는 email, password, nickname
+    if (Object.keys(req.body).length !== 3) {
+      res.status(422).send("모든 회원가입 항목은 필수입니다");
+    } else {
+      let data = req.body;
+      user.findOrCreate({
+        where: {
+          email: data.email
+        },
+        defaults: { 
+          email: data.email, /////////////////
+          password: data.password, /////////////////
+          nickname: data.nickname,
+        },
+      })
+        .then(([result, created]) => {
+          if (!created) {
+            res.status(409).send("이미 가입된 이메일입니다.");
+          } else {
+            console.log(`admin: 회원가입 신청정보입니다.`);
+            console.log(result.dataValues); //React는 dataValues에 저장
+            console.log(`-----------------------`);
+            res.status(201).send(result);
+          }
+        })
+    }
   },
   signInController: (req, res) => {
     // 로그인. 요구 필드 : email, password.
     // 회원정보를 데이터베이스에서 확인하고, 회원의 id는 session에 들어감.
     // 분기는 3개. 200, 401, 500
-    let data = req.body;
-    console.log(data);
+    //let data = req.body;
+    //console.log(req.body);
+
     user.findOne({
       where: {
-        email: data.email,
-        password: data.password
+        // email: 'hsk9210@gmail.com',
+        // password: '0000'
+         email: req.body.email,
+         password: req.body.password
       }
     })
       .then(result => {
@@ -43,6 +76,7 @@ module.exports = {
           res.status(500).send('internal server error');
         }
       })
+      .catch(err=>console.log(err));
   },
   signOutController: (req, res) => {
     //로그아웃 요청 및 응답
