@@ -1,10 +1,30 @@
 const { user } = require("../models");
 module.exports = {
+  getTestController: (req,res) =>{
+    let data = req.body;
+    console.log(data);
+    user.findOne({
+      where: {
+        email: 'hsk9210@gmail.com',
+        password: '0000'
+      }
+    })
+      .then(result => {
+          console.log('데이터가 있으면 날라온다.');
+          req.session.userid = result.id;
+          res.status(200).send({
+             id: result.id,
+             message:'Method:get is successful'
+            });
+        })
+
+  },
   signInController: (req, res) => {
     // 로그인. 요구 필드 : email, password.
     // 회원정보를 데이터베이스에서 확인하고, 회원의 id는 session에 들어감.
     // 분기는 3개. 200, 401, 500
     let data = req.body;
+    console.log(data);
     user.findOne({
       where: {
         email: data.email,
@@ -41,5 +61,18 @@ module.exports = {
     */
     
   },
+  /*
+  redirect: async function (req, res) {
+    //const { url } = req.body;
+    let result = await Url.findOne({ //req.body에서 뽑아내지 말고 위에 Url에서!!!
+      where:{id:req.params.id}
+    });
+    await result.increment('visits');
+    res.status(302).redirect(result.url);
+    //res.redirect('/');
+
+  },
+
+  */
 
 };

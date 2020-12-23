@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const cors = require("cors"); //아직 미완
+const cors = require("cors"); //아직 미완 + 내부에서만 돌릴거면 필요없다
 const session = require("express-session");
 //컨트롤러는 라우터와 분리 -> 12/22 routes/users.js로 변경. app.js에서 라우터 제거 후 routes에 기능 몰빵
 //const mainController = require("../controllers");
@@ -23,8 +23,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/', indexRouter); //밑에서 routes/users.js의 라우팅용으로 변경
+//app.use('/users', usersRouter);
 //여기까지는 뷰를 위한 미들웨어
 
 //세션 사용.
@@ -51,8 +51,8 @@ app.use(
 //app.post("/signin", mainController.signInController);
 //app.post("/signout", mainController.signOutController);
 //
-app.use('/', indexRouter); //이건 routes/index.js 를 통해 views/index.js로 넘어갑니다.
-app.use('/controllers', usersRouter);
+//app.use('/', indexRouter); //이건 routes/index.js 를 통해 views/index.js로 넘어갑니다.
+app.use('/', usersRouter); ///controllers
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
