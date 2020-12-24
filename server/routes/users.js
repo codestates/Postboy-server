@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/get', mainController.getTestController);
 router.post("/signin", mainController.signInController);
 router.post("/signout", mainController.signOutController);
+router.post("/signup", mainController.signUpController);
 //추후에 필요?
 //router.get("/:id", mainController.redirect);
 
