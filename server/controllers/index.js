@@ -1,9 +1,11 @@
 const { user } = require("../models");
 module.exports = {
   getTestController: (req,res) =>{
+
     //GET 요청 테스트 - 작동됨 확인
     let data = req.body;
     console.log(req);
+
     user.findOne({
       where: {
         email: 'hsk9210@gmail.com',
@@ -15,11 +17,14 @@ module.exports = {
           req.session.userid = result.id;
           res.status(200).send({
              id: result.id,
-             message:'Method:get is successful',
+
+             message:'Method:get is successful'
+
             });
         })
 
   },
+
   signUpController: (req, res) => {
     // 회원정보를 first 스키마에 저장
     // API상 req.body 파라미터는 email, password, nickname
@@ -49,12 +54,18 @@ module.exports = {
         })
     }
   },
+
   signInController: (req, res) => {
     // 로그인. 요구 필드 : email, password.
     // 회원정보를 데이터베이스에서 확인하고, 회원의 id는 session에 들어감.
     // 분기는 3개. 200, 401, 500
+
     //let data = req.body;
     //console.log(req.body);
+
+
+    let data = req.body;
+    console.log(data);
 
     user.findOne({
       where: {
