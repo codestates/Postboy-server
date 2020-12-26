@@ -1,4 +1,4 @@
-// cli index.js는 사용불가. 수정본
+// cli로 초기화된 index.js는 사용불가. 수정본
 
 "use strict";
 require("dotenv").config();

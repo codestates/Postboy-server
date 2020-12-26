@@ -8,8 +8,10 @@ router.get('/', function(req, res, next) {
 });
 */
 router.get('/get', mainController.getTestController);
+router.post("/signup", mainController.signUpController);
 router.post("/signin", mainController.signInController);
 router.post("/signout", mainController.signOutController);
+router.post("/history?action=clear", mainController.historyDelController);
 //추후에 필요?
 //router.get("/:id", mainController.redirect);
 
