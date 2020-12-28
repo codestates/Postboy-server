@@ -75,7 +75,17 @@ module.exports = {
         } else if(result) {
           console.log('로그인 성공. 데이터 응답 클라이언트에 전송');
           req.session.userid = result.id;
-          res.status(200).send({ id: result.id });
+          res.status(200).send(
+            {
+              //id: result.id,
+              email: result.email,
+              password: result.password,
+              nickname: result.password,
+              createdAt: result.createdAt,
+              updatedAt: result.updatedAt,             
+
+            }
+          );
         }
         else{
           res.status(500).send('internal server error');
