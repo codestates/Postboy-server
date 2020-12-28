@@ -49,7 +49,7 @@ module.exports = {
             console.log(`admin: 회원가입 신청정보입니다.`);
             console.log(result.dataValues); //React는 dataValues에 저장
             console.log(`-----------------------`);
-            res.status(201).send(result);
+            res.status(201).send({result:result.dataValues.id});
           }
         })
     }
