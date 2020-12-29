@@ -52,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_history_request1_idx",
+        name: "fk_history_request_idx",
         using: "BTREE",
         fields: [
           { name: "request_id" },
