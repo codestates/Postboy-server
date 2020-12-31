@@ -1,10 +1,11 @@
 //import Model from "../models/init-models";
-const { Models } = require("../models/init-models");
+//const { Models } = require("../models/init-models");
 //const models = Models(sequelize);
 const { request } = require("../models");
 const { user } = require("../models");
 const { history } = require("../models");
-//const { init-models } = require("../models");
+const { models } = require("../models/index.js");
+const {sequelize} = require("sequelize");
 
 module.exports = {
   
@@ -66,7 +67,7 @@ module.exports = {
             {
               id: result.id,
               email: result.email,
-              nickname: result.password,
+              nickname: result.nickname,
               createdAt: result.createdAt,
               updatedAt: result.updatedAt,
             }
@@ -144,21 +145,25 @@ module.exports = {
     
   },
 
-  historyAddController: (req,res) =>{
-    //
+  historyRequestAddController: (req,res) =>{
+    // url, methodType, request_id(required), type, status
+    //parameters
     //models.sequelize.transaction
-    /*
-    history.create({
-      where: {
-        id: req.session.userid
-      },
-      defaults: { 
-        email: data.email, /////////////////
-        password: data.password, /////////////////
-        nickname: data.nickname,
-      },
-    })
-    */
+    let data = req.body;
+    let inputHistoryfromClient = {
+      type: data.type,
+      status: data.status,
+      user_id: req.session.userid,
+      request_id: req.session.userid
+    };
+    let inputRequestfromClient = {
+      methodType: data.methodType,
+      url: data.url,
+      //id: req.session.userid
+    };
+
+    
+    
 
     //
   },
