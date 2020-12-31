@@ -21,7 +21,7 @@ router.get("/historyGet", mainController.historyGetController);
 //router.delete('/history', mainController.historyDelController);
 //router.route('/history');
 
-//router.post("/historyAdd", mainController.historyRequestAddController);
+router.post("/historyAdd", mainController.historyRequestAddController);
 //http://localhost:3000/history?action=add&type=aaa&status=bbb
 //추후에 필요?
 //router.get("/:id", mainController.redirect);

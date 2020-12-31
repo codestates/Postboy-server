@@ -162,6 +162,92 @@ module.exports = {
       //id: req.session.userid
     };
 
+    /*    
+    try {
+      const result = models.sequelize.transaction({isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.SERIALIZABLE}, transaction => {
+        // your transactions
+        return history.create(
+          inputHistoryfromClient, //{ 여기에 넣을 값 },
+          
+        )
+        .then(result1=>{
+
+          request.create(
+            inputRequestfromClient, //{ 여기에 넣을 값 },
+            transaction
+          )
+          .then(result2=>{
+            if(!result2){
+              res.status(400).send('bad request');
+            }
+            res.status(200).send('success'); //나중에 result대신 성공메세지로 바꾸기.
+      
+          })
+          .catch(err=>{console.log(err)});
+
+        })
+        .catch(err=>{console.log(err)});
+
+      });
+      // transaction has been committed. Do something after the commit if required.
+    } catch(err) {
+      // do something with the err.
+      console.log(err);
+    }
+    */
+    history.create(
+      inputHistoryfromClient, //{ 여기에 넣을 값 },
+      
+    )
+    .then(result=>{
+      if(!result){
+        res.status(400).send('bad request');
+      }
+      request.create(
+        inputRequestfromClient, //{ 여기에 넣을 값 },
+        
+      )
+      .then(result=>{
+        if(!result){
+          res.status(400).send('bad request');
+        }
+        res.status(200).send('success'); //나중에 result대신 성공메세지로 바꾸기.
+  
+      })
+      .catch(err=>{console.log(err)});
+      
+
+    })
+    .catch(err=>{console.log(err)});
+    
+    /*
+    history.create(
+      inputHistoryfromClient, //{ 여기에 넣을 값 },
+      
+    )
+    .then(result=>{
+      if(!result){
+        res.status(400).send('bad request');
+      }
+      res.status(200).send('success'); //나중에 result대신 성공메세지로 바꾸기.
+
+    })
+    .catch(err=>{console.log(err)});
+    */
+    /*
+    request.create(
+      inputRequestfromClient, //{ 여기에 넣을 값 },
+      
+    )
+    .then(result=>{
+      if(!result){
+        res.status(400).send('bad request');
+      }
+      res.status(200).send('success'); //나중에 result대신 성공메세지로 바꾸기.
+
+    })
+    .catch(err=>{console.log(err)});
+    */
     
     
 
