@@ -1,4 +1,4 @@
--- MySQL type
+-- MySQL Workbench Forward Engineering
 SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS,
   UNIQUE_CHECKS = 0;
 SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS,
@@ -64,11 +64,13 @@ CREATE TABLE IF NOT EXISTS `first`.`history` (
   `user_id` INT NOT NULL,
   `request_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_history_user_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_history_request1_idx` (`request_id` ASC) VISIBLE,
   CONSTRAINT `fk_history_user` FOREIGN KEY (`user_id`) REFERENCES `first`.`user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_history_request1` FOREIGN KEY (`request_id`) REFERENCES `first`.`request` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_history_request` FOREIGN KEY (`request_id`) REFERENCES `first`.`request` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
+/* forward engineering 버그? history1 인덱스 부분 삭제.
+ INDEX `fk_history1_user_idx` (`user_id` ASC) VISIBLE,
+ INDEX `fk_history1_request_idx` (`request_id` ASC) VISIBLE,
+ */
