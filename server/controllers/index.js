@@ -19,29 +19,7 @@ module.exports = {
         if (!result) {
           res.status(401).send("Unauthorized or invalid ID");
         } else if(result) {
-                    
-          connection.query(`
-            select h.request_id , h.status, h.type, h.createdAt, r.url, r.methodType
-            from history AS h, request AS r
-            where h.user_id=${user_id} AND h.request_id=${user_id}
-            ;` , function(err,rows,fields){
-            if(!err){
-              res.status(200).send(
-                {
-                  id: result.id,
-                  email: result.email,
-                  nickname: result.password,
-                  createdAt: result.createdAt,
-                  updatedAt: result.updatedAt,
-                  rows //order by createdAt으로 자동정렬된 상태
-                },
-                
-              );
-            }
-            else{
-              res.status(404).send('not found in: '+user_id);
-            }
-          })
+          res.status(200).send(result);
 
         }
         else{
@@ -186,7 +164,7 @@ module.exports = {
   },
   //API 확정에 따른 simple destroy all로 변경
   //add개발이 완료되면 single delete API 추가예정
-  historyDelController: (req,res) =>{
+  historyClearController: (req,res) =>{
     /*
     if(req.param('action') ===clear){
       // localhost:3000/history?action=clear

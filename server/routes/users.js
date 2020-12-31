@@ -16,8 +16,8 @@ router.post("/signup", mainController.signUpController);
 router.post("/signin", mainController.signInController);
 router.post("/signout", mainController.signOutController);
 //router.post("/requestAdd", mainController.requestAddController);
-router.delete("/historyDel", mainController.historyDelController);
-router.get("/historyget", mainController.historyGetController);
+router.delete("/historyClear", mainController.historyClearController);
+router.get("/historyGet", mainController.historyGetController);
 //router.delete('/history', mainController.historyDelController);
 //router.route('/history');
 
