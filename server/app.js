@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require("cors"); //아직 미완 + 내부에서만 돌릴거면 필요없다
 const session = require("express-session");
+const fetch = require("node-fetch"); //서버 테스트용 하나. 안쓰니 추후 지울 것.
 //컨트롤러는 라우터와 분리 -> 12/22 routes/users.js로 변경. app.js에서 라우터 제거 후 routes에 기능 몰빵
 //const mainController = require("../controllers");
 
@@ -36,15 +37,32 @@ app.use(
   })
 );
 //
+
+
 /*
 app.use(
   cors({
-    //origin: ['http://localhost:3000'],
-    methods: ['GET', 'POST'],
-    credentials: true
+    origin: ['http://localhost:3000'],
+    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+    credentials: false //true
   })
 );
 */
+
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
+/*
+app.get('/signin', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  //res.send(data);
+});
+*/
+
+
 
 //주소 분기 - deprecated.
 //routes/users.js가 메인 라우터 입니다.
@@ -53,6 +71,7 @@ app.use(
 //
 //app.use('/', indexRouter); //이건 routes/index.js 를 통해 views/index.js로 넘어갑니다.
 app.use('/', usersRouter); ///controllers
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
