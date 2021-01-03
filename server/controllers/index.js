@@ -30,10 +30,11 @@ module.exports = {
       .catch(err=>console.log(err));
   },
 
-  signInController: (req, res) => {
-    // 로그인. 요구 필드 : email, password.
-    // 회원정보를 데이터베이스에서 확인하고, 회원의 id는 session에 들어감.
-    // 분기는 3개. 200, 401, 500
+  // 로그인. 요구 필드 : email, password.
+  // 회원정보를 데이터베이스에서 확인하고, 회원의 id는 session에 들어감.
+  // 분기는 3개. 200, 401, 500
+  signInController: async (req, res) => {
+
     //let data = req.body;
     //console.log(req.body);
       /*
