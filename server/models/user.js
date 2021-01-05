@@ -24,13 +24,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(45),
       allowNull: true
     }
-
-  };
-  user.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    nickname: DataTypes.STRING
-
   }, {
     sequelize,
     tableName: 'user',
