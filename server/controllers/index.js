@@ -8,7 +8,9 @@ const { models } = require("../models/index.js");
 const {sequelize} = require("sequelize");
 
 module.exports = {
-  
+  // /historyGet route
+  // req : session id
+  // res : all of history that related to user
   historyGetController: (req,res) =>{
     
     history.findAll({
@@ -35,22 +37,6 @@ module.exports = {
   // 분기는 3개. 200, 401, 500
   signInController: async (req, res) => {
 
-    //let data = req.body;
-    //console.log(req.body);
-      /*
-      {
-      include: [
-        {
-          model: history,
-          attributes: [createdAt,status],
-        },
-      ],
-      where: {
-         email: req.body.email,
-         password: req.body.password
-      }
-    }
-    */
     user.findOne({
       where:{
         email:req.body.email,
@@ -220,37 +206,7 @@ module.exports = {
 
     })
     .catch(err=>{console.log(err)});
-    
-    /*
-    history.create(
-      inputHistoryfromClient, //{ 여기에 넣을 값 },
-      
-    )
-    .then(result=>{
-      if(!result){
-        res.status(400).send('bad request');
-      }
-      res.status(200).send('success'); //나중에 result대신 성공메세지로 바꾸기.
-
-    })
-    .catch(err=>{console.log(err)});
-    */
-    /*
-    request.create(
-      inputRequestfromClient, //{ 여기에 넣을 값 },
-      
-    )
-    .then(result=>{
-      if(!result){
-        res.status(400).send('bad request');
-      }
-      res.status(200).send('success'); //나중에 result대신 성공메세지로 바꾸기.
-
-    })
-    .catch(err=>{console.log(err)});
-    */
-    
-    
+        
 
     //
   },

@@ -11,18 +11,13 @@ router.get('/', function(req, res, next) {
 });
 */
 router.get('/get', mainController.getTestController);
-//router.post('/signin2', mainController.signInController2);
 router.post("/signup", mainController.signUpController);
 router.post("/signin", mainController.signInController);
 router.post("/signout", mainController.signOutController);
 //router.post("/requestAdd", mainController.requestAddController);
 //router.delete("/historyClear", mainController.historyClearController);
-//router.get("/historyGet", mainController.historyGetController);
-//router.delete('/history', mainController.historyDelController);
 //router.route('/history');
 
-//router.post("/historyAdd", mainController.historyRequestAddController);
-//http://localhost:3000/history?action=add&type=aaa&status=bbb
 //추후에 필요?
 //router.get("/:id", mainController.redirect);
 
