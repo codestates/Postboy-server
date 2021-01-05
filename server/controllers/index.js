@@ -8,6 +8,7 @@ const { models } = require("../models/index.js");
 const {sequelize} = require("sequelize");
 
 module.exports = {
+
   // /historyGet route
   // req : session id
   // res : all of history that related to user
@@ -24,6 +25,7 @@ module.exports = {
         } else if(result) {
           res.status(200).send(result);
 
+
         }
         else{
           res.status(500).send('internal server error');
@@ -31,6 +33,7 @@ module.exports = {
       })
       .catch(err=>console.log(err));
   },
+
 
   // 로그인. 요구 필드 : email, password.
   // 회원정보를 데이터베이스에서 확인하고, 회원의 id는 session에 들어감.
@@ -42,6 +45,7 @@ module.exports = {
         email:req.body.email,
         password:req.body.password
       },
+
     })
       .then(result => {
         if (!result) {
@@ -49,6 +53,7 @@ module.exports = {
         } else if(result) {
           console.log('로그인 성공. 데이터 응답 클라이언트에 전송');
           req.session.userid = result.id;
+
           console.log(result.dataValues);
           res.status(200).send(
             {
@@ -57,6 +62,7 @@ module.exports = {
               nickname: result.nickname,
               createdAt: result.createdAt,
               updatedAt: result.updatedAt,
+
             }
           );
         }
@@ -65,6 +71,7 @@ module.exports = {
         }
       })
       .catch(err=>console.log(err));
+
   },
   
   getTestController: (req,res) =>{
@@ -117,6 +124,7 @@ module.exports = {
           }
         })
     }
+
   },
   
 
