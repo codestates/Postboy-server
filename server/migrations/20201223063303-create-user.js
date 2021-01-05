@@ -14,7 +14,17 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
+
+      username: {
+        type: Sequelize.STRING
+      },
+      profilepath: {
+        type: Sequelize.STRING
+      },
+      statusmessage: {
+
       nickname: {
+
         type: Sequelize.STRING
       },
       createdAt: {
